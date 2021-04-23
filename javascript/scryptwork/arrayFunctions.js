@@ -1,6 +1,6 @@
 //recreating .forEach method
 
-funttion forEach(array, callback) {
+function forEach(array, callback) {
     for (arr of array){
         callback(arr)
     }
@@ -48,7 +48,7 @@ function some(array, callback) {
 
 function every(array, callback) {
     for (let i = 0; i < array.length; i++) {
-        if(callback(array[i], i array) === false) {
+        if(callback(array[i], i, array) === false) {
             return false;
         }
     }
