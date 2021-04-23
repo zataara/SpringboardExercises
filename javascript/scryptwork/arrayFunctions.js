@@ -71,8 +71,13 @@ function find(array, callback) {
 function findIndex(array, callback) {
     for (let i = 0; i < array.length; i++) {
         if (callback(array[i], i, array) === true) {
-            return i
+            return i;
         }
     }
     return -1;
 }
+
+
+// recreating .reduce method
+
+function reduce(array, accumulator, nextElement)
