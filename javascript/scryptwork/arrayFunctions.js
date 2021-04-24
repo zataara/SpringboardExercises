@@ -78,5 +78,3 @@ function findIndex(array, callback) {
 }
 
 
-// recreating .reduce method
-
