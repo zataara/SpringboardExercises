@@ -10,3 +10,6 @@ function averageOf(arr) {
     let averageNum = totalNums / arr.length;
     return averageNum
 }
+
+
+

@@ -4,7 +4,6 @@ function forEach(array, callback) {
     for (arr of array){
         callback(arr)
     }
-    
 }
 
 //recreating .map method
@@ -26,11 +25,9 @@ function filter(array, callback) {
     for (let i = 0; i < array.length; i++ ){
         callback(array[i], i , arr);{
         filteredArray.push(array[i])
-    
         }
         return filteredArray;
     }
-    
 }
 
 // recreating .some method
