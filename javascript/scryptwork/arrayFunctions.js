@@ -63,7 +63,7 @@ function find(array, callback) {
 }
 
 
-// recreating .findIndes method
+// recreating .findIndex method
 
 function findIndex(array, callback) {
     for (let i = 0; i < array.length; i++) {
