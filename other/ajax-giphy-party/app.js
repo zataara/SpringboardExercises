@@ -21,7 +21,6 @@ function addGif(res) {
 
 $("form").on("submit", async function(evt) {
   evt.preventDefault();
-
   let searchTerm = $searchInput.val();
   $searchInput.val("");
 
@@ -31,6 +30,7 @@ $("form").on("submit", async function(evt) {
       api_key: "MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym"
     }
   });
+  console.log(response);
   addGif(response.data);
 });
 
