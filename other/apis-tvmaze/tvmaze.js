@@ -93,14 +93,30 @@ async function getEpisodes(id) {
 
   // TODO: return array-of-episode-info, as described in docstring above
   const response = await axios.get(`http://api.tvmaze.com/shows/${id}/episodes`)
-    console.log(response);
-
     let episodes = response.data.map(episode => ({
       id: episode.id,
       name: episode.name,
       season: episode.season,
       number: episode.number,
     }));
-  
     return episodes;
+  }
+
+
+function populateEpisodes(episodes) {
+    const $episodesList = $("#episodes-list");
+    $episodesList.empty();
+      
+    for (let episode of episodes) {
+      let $item = $(
+        `<li>
+           ${episode.name}
+           (season ${episode.season}, episode ${episode.number})
+         </li>
+        `);
+  
+      $episodesList.append($item);
+    }
+  
+    $("#episodes-area").show();
   }
