@@ -20,25 +20,21 @@
 async function searchShows(query) {
   // TODO: Make an ajax request to the searchShows api.  Remove
   // hard coded data.
-  const response = await axios.get('http://api.tvmaze.com/search/shows?q=<search query>')
+  const response = await axios.get(`http://api.tvmaze.com/search/shows?q=${query}`)
+    console.log(response);
+  let shows = response.data.map(function(result) {
+      let show = result.show;
+        return {
+          id: show.id,
+          name: show.name,
+          summary: show.summary,
+          image: show.image ? show.image.medium : 'Missing_Image_URL'
+        }
 
-
-
-
-
-
-
-
-
-  return [
-    {
-      id: 1767,
-      name: "The Bletchley Circle",
-      summary: "<p><b>The Bletchley Circle</b> follows the journey of four ordinary women with extraordinary skills that helped to end World War II.</p><p>Set in 1952, Susan, Millie, Lucy and Jean have returned to their normal lives, modestly setting aside the part they played in producing crucial intelligence, which helped the Allies to victory and shortened the war. When Susan discovers a hidden code behind an unsolved murder she is met by skepticism from the police. She quickly realises she can only begin to crack the murders and bring the culprit to justice with her former friends.</p>",
-      image: "http://static.tvmaze.com/uploads/images/medium_portrait/147/369403.jpg"
-    }
-  ]
+    })
+  return shows;
 }
+
 
 
 
@@ -96,4 +92,15 @@ async function getEpisodes(id) {
   //       http://api.tvmaze.com/shows/SHOW-ID-HERE/episodes
 
   // TODO: return array-of-episode-info, as described in docstring above
-}
+  const response = await axios.get(`http://api.tvmaze.com/shows/${id}/episodes`)
+    console.log(response);
+
+    let episodes = response.data.map(episode => ({
+      id: episode.id,
+      name: episode.name,
+      season: episode.season,
+      number: episode.number,
+    }));
+  
+    return episodes;
+  }
