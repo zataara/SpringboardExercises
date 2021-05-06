@@ -39,3 +39,6 @@ $("form").on("submit", async function(evt) {
 $("#remove").on("click", function() {
   $gifs.empty();
 });
+
+
+    
