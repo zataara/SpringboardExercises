@@ -20,6 +20,15 @@
 async function searchShows(query) {
   // TODO: Make an ajax request to the searchShows api.  Remove
   // hard coded data.
+  const response = await axios.get('http://api.tvmaze.com/search/shows?q=<search query>')
+
+
+
+
+
+
+
+
 
   return [
     {
