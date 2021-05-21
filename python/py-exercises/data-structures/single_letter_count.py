@@ -10,3 +10,8 @@ def single_letter_count(word, letter):
         >>> single_letter_count("Hello World", 'l')
         3
     """
+
+    count = [char for char in word if char == letter]
+    return len(count)
+
+    

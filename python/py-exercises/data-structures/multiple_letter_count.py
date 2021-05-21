@@ -7,3 +7,10 @@ def multiple_letter_count(phrase):
         >>> multiple_letter_count('Yay')
         {'Y': 1, 'a': 1, 'y': 1}
     """
+
+    phrase_dic = {}
+
+    for ltr in phrase:
+        phrase_dic[ltr] = phrase_dic.get(ltr, 0) + 1
+
+    return phrase_dic
