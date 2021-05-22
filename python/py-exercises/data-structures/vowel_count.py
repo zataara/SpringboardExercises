@@ -9,7 +9,11 @@ def vowel_count(phrase):
     """
 
     count = {}
-    
- 
+
+    for ltr in phrase.lower():
+        if ltr in 'aeiou':
+            count[ltr] = count.get(ltr, 0) + 1
+
+    return count
 
 
