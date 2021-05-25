@@ -6,8 +6,17 @@ import random
 class WordFinder:
     """Machine to find random words
 
+    >>> wf = WordFinder('test.txt')
+    5 words read
     
+    >>> wf.random() in ['this', 'is', 'a', 'test', 'file']
+    True
 
+    >>> wf.random() in ['this', 'is', 'a', 'test', 'file']
+    True
+
+    >>> wf.random() in ['this', 'is', 'a', 'test', 'file']
+    True
     """
 
     def __init__(self, filepath):
