@@ -20,3 +20,18 @@ class SerialGenerator:
     100
     """
 
+    def __init__(self, start=100):
+        "Creates a new Serial number instance"
+        self.start = start
+        self.serial = start - 1
+
+    def generate(self):
+        """Creates a new serial number"""
+        self.serial += 1
+        return self.serial
+
+    def reset(self):
+        """Resets the serial number back to its starting point"""
+        self.serial = self.start - 1
+
+
