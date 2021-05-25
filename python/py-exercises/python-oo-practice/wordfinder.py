@@ -4,9 +4,9 @@ import random
 
 
 class WordFinder:
-    """Machine to find random words
+    """Machine to find random words for a specific filepath
 
-    >>> wf = WordFinder('test.txt')
+    >>> wf = WordFinder('wordfinder_test.txt')
     5 words read
     
     >>> wf.random() in ['this', 'is', 'a', 'test', 'file']
@@ -22,7 +22,7 @@ class WordFinder:
     def __init__(self, filepath):
         reference_file = open(filepath)
         self.words = self.parse(reference_file)
-        print(f'{len(self.words)} words read')
+        print(f"{len(self.words)} words read")
 
 
     def parse(self, reference_file):
@@ -35,12 +35,23 @@ class WordFinder:
     
 
 class SpecialWordFinder(WordFinder):
+    """Machine to find random words from a specific filepath where the file contains lines with no text 
 
-    def __init__(self, filepath):
-        super().__init__(filepath)
+    >>> wf = SpecialWordFinder('specialwordfinder_test.txt')
+    5 words read
+    
+    >>> wf.random() in ['this', 'is', 'a', 'specialwordfinder', 'test']
+    True
+
+    >>> wf.random() in ['this', 'is', 'a', 'specialwordfinder', 'test']
+    True
+
+    >>> wf.random() in ['this', 'is', 'a', 'specialwordfinder', 'test']
+    True
+    """
 
     def parse(self, reference_file):
-        return[l.strip() for l in reference file if l.strip() and not l.startswith('#')]
+        return[l.strip() for l in reference_file if l.strip() and not l.startswith('#')]
 
 
 
