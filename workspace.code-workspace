@@ -3,6 +3,9 @@
 		{
 			"name": "SpringBoard-Github-Exercises",
 			"path": "."
+		},
+		{
+			"path": "sql"
 		}
 	],
 	"settings": {}
