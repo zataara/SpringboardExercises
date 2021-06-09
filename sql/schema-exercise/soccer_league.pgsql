@@ -1,17 +1,17 @@
 
 
-DROP DATABASE medical_center_db
+DROP DATABASE IF EXISTS medical_center_db;
 
-CREATE DATABASE medical_center_db
+CREATE DATABASE medical_center_db;
+
+\c medical_center_db
 
 CREATE TABLE season (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     start_date DATE,
     end_date DATE
-)
-
-
+);
 
 CREATE TABLE teams (
     id SERIAL PRIMARY KEY,
@@ -27,28 +27,28 @@ CREATE TABLE teams (
     won_game9 BOOLEAN,
     won_game10 BOOLEAN
     
-)
+);
 
 CREATE TABLE players(
     id SERIAL PRIMARY KEY,
     team_id REFERENCES teams
-)
+);
 
 CREATE TABLE referees (
     id SERIAL PRIMARY KEY,
     name TEXT
-)
+);
 
 CREATE TABLE matches (
     id SERIAL PRIMARY KEY,
     referee_id REFERENCES referees,
     winning_team REFERENCES teams,
     losing_team REFERENCES teams
-)
+);
 
 CREATE TABLE goals (
     id SERIAL PRIMARY KEY,
     team1_id REFERENCES teams,
     game_id REFERENCES games,
     player_id REFERENCES players
-)
+);
