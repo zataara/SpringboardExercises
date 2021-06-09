@@ -57,8 +57,8 @@ operators = {
 @app.route('/Math/<oper>')
 def operate(oper):
     '''Doing math on a and b '''
-    a = int(request.args.get('a')
-    b = int(request.args.get('b')
-    result = operators[oper](a,b)
+    a = int(request.args.get('a'))
+    b = int(request.args.get('b'))
+    result = operators[oper]('a','b')
 
     return str(result)
