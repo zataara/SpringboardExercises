@@ -26,7 +26,6 @@ $(function() {
 
 
     $btn.on('click', async function() {
-        show()
         let res = await axios.get(`${baseURL}/${deckId}/draw/`)
         let cardSrc = res.data.cards[0].image;
         let angle = Math.random() * 90 - 45;
