@@ -24,7 +24,7 @@ class MarkovMachine {
       let nextWord = this.words[i + 1] || null;
 
       if (chains.has(word)) chains.get(word).push(nextWord);
-      else chains.set(word, [nextWOrd]);
+      else chains.set(word, [nextWord]);
     }
     this.chains = chains;
   }
@@ -44,7 +44,7 @@ class MarkovMachine {
       out.push(key);
       key = MarkovMachine.choice(this.chains.get(key));
     }
-    return out.join('')
+    return out.join(' ')
   }
 }
 

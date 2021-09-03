@@ -27,11 +27,21 @@ describe('testing the Markov Machine', function () {
         expect(mm.chains.keys()).toContain('quick');
         expect(mm.chains.keys()).toContain('brown');
         expect(mm.chains.keys()).toContain('fox');
-
-
     });
 
-
+    test('testing makeText() function', function() {
+        mm = new MarkovMachine('this is and that is');
+        expect(mm.makeText()).toMatch(/is/ || /and/ || /that/);
+        
+        
+    })
+    
+    test('testing makeText() function', function() {
+        mm = new MarkovMachine('the cat in the hat');
+        expect(mm.makeText()).toMatch(/cat/ || /in/ || /hat/);
+        
+        
+    })
 
 
 })
