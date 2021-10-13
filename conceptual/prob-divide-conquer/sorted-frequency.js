@@ -11,7 +11,7 @@
 // sortedFrequency([1,1,2,2,2,2,3],1) // 2
 // sortedFrequency([1,1,2,2,2,2,3],4) // -1
 
-function sortedFrequency(arr, val) {
+function sortedFrequency(arr, num) {
     
     let firstIdx = findFirst(arr, num);
     if (firstIdx == -1) return firstIdx;
