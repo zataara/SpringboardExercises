@@ -20,21 +20,19 @@ class BinaryTree {
     if(!this.root) return 0;
 
     const depths = [];
-    let eachDepth = 0;
+    let eachDepth = 1;
     
     function findDepth(node) {
-
-      for(let leg of node)
-        if(leg.left) {
+        if(node.left) {
           eachDepth++;
-          findDepth(leg)
-        } else if (this.right) {
+          findDepth(node.left)
+        } else if (node.right) {
           eachDepth++;
-          findDepth(leg)
+          findDepth(node.right)
         } else {
           depths.push(eachDepth)
         }
-    }
+      }
     findDepth(this.root)
     return Math.min(depths);
   }
@@ -43,7 +41,24 @@ class BinaryTree {
    * the length of the longest path from the root to a leaf. */
 
   maxDepth() {
+    if(!this.root) return 0;
 
+    const depths = [];
+    let eachDepth = 1;
+    
+    function findDepth(node) {
+        if(node.left) {
+          eachDepth++;
+          findDepth(node.left)
+        } else if (node.right) {
+          eachDepth++;
+          findDepth(node.right)
+        } else {
+          depths.push(eachDepth)
+        }
+      }
+    findDepth(this.root)
+    return Math.max(depths);
   }
 
   /** maxSum(): return the maximum sum you can obtain by traveling along a path in the tree.
