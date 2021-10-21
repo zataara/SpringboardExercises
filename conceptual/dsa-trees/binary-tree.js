@@ -19,23 +19,15 @@ class BinaryTree {
   minDepth() {
     if(!this.root) return 0;
 
-    const depths = [];
-    let eachDepth = 1;
-    
-    function findDepth(node) {
-        if(node.left) {
-          eachDepth++;
-          findDepth(node.left)
-        } else if (node.right) {
-          eachDepth++;
-          findDepth(node.right)
-        } else {
-          depths.push(eachDepth)
-        }
+    function minDepthHelper(node) {
+      if (node.left === null && node.right === null) return 1;
+        if(node.left === null) return minDepthHelper(node.right) + 1;
+        if(node.right === null) return minDepthHelper(node.left) + 1;
+        return (Math.min(minDepthHelper(node.left), minDepthHelper(node.right)) + 1);
       }
-    findDepth(this.root)
-    return Math.min(depths);
+    return minDepthHelper(this.root);
   }
+  
 
   /** maxDepth(): return the maximum depth of the tree -- that is,
    * the length of the longest path from the root to a leaf. */
@@ -43,36 +35,55 @@ class BinaryTree {
   maxDepth() {
     if(!this.root) return 0;
 
-    const depths = [];
-    let eachDepth = 1;
-    
-    function findDepth(node) {
-        if(node.left) {
-          eachDepth++;
-          findDepth(node.left)
-        } else if (node.right) {
-          eachDepth++;
-          findDepth(node.right)
-        } else {
-          depths.push(eachDepth)
-        }
+    function maxDepthHelper(node) {
+      if (node.left === null && node.right === null) return 1;
+        if(node.left === null) return maxDepthHelper(node.right) + 1;
+        if(node.right === null) return maxDepthHelper(node.left) + 1;
+        return (Math.max(maxDepthHelper(node.left), maxDepthHelper(node.right)) + 1);
       }
-    findDepth(this.root)
-    return Math.max(depths);
+    return maxDepthHelper(this.root);
   }
 
   /** maxSum(): return the maximum sum you can obtain by traveling along a path in the tree.
    * The path doesn't need to start at the root, but you can't visit a node more than once. */
 
   maxSum() {
+    let result = 0;
+    
+    function findSum(node) {
+      if(node === null) return 0;
+      const leftSum = findSum(node.left);
+      const rightSum = findSum(node.right)
+      result = Math.max(result, node.val + leftSum + rightSum);
+      return Math.max(0, leftSum + node.val, rightSum + node.val);
+      }
 
+    findSum(this.root)
+    return result
   }
 
   /** nextLarger(lowerBound): return the smallest value in the tree
    * which is larger than lowerBound. Return null if no such value exists. */
 
   nextLarger(lowerBound) {
+    if (!this.root) return null;
 
+    let queue = [this.root];
+    let closest = null;
+
+    while(queue.length) {
+      let currentNode = queue.shift();
+      let currentVal = currentNode.val;
+      let higherThanLowerBound = currentVal > lowerBound;
+      let shouldReassignClosest = currentVal < closest || closest === null;
+
+      if (higherThanLowerBound && shouldReassignClosest) {
+        closest = currentVal;
+      }
+      if(currentNode.left) queue.push(currentNode.left);
+      if(currentNode.right) queue.push(currentNode.right); 
+    }
+    return closest;
   }
 
   /** Further study!
